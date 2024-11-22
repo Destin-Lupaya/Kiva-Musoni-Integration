@@ -11,7 +11,7 @@ const router = express.Router();
 
 // Loan routes
 router.post('/loans/sync', protect, validateLoanSync, LoanController.syncLoan);
-router.get('/loans/:loanId/status', protect, LoanController.getLoanStatus);
+router.get('/loans/:loanId', protect, LoanController.getLoanDetails);
 
 // Journal routes
 router.post('/journals', protect, validateJournalCreate, JournalController.createJournal);
