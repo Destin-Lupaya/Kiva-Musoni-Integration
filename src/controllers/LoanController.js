@@ -52,3 +52,22 @@ export const getLoanStatus = async (req, res) => {
     res.status(500).json({ status: 'error', message: error.message });
   }
 };
+
+export const getLoanStatus = async (req, res) => {
+  try {
+    const { loanId } = req.params;
+    const loan = await Loan.findOne({
+      where: { internal_loan_id: loanId },
+      include: [LoanDraft]
+    });
+
+    if (!loan) {
+      return res.status(404).json({ status: 'error', message: 'Loan not found' });
+    }
+
+    res.json({ status: 'success', data: loan });
+  } catch (error) {
+    logger.error('Get loan status error:', error);
+    res.status(500).json({ status: 'error', message: error.message });
+  }
+};
