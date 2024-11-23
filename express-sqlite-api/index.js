@@ -25,5 +25,5 @@ app.post('/users', async (req, res) => {
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${3000}`);
 });
